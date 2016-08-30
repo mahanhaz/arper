@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while read -r line; do 
+    host=$(echo "$line" | awk '{print $1}');
+    ip=$(echo "$line" | awk '{print $2}' | tr -d '(' | tr -d ')');
+    mac=$(echo "$line" | awk '{print $4}');
+    interface=$(echo "$line" | awk '{print $6}');
+
+    echo "$host-$ip-$mac-$interface";
+done
